@@ -75,9 +75,7 @@ def main(source_path, model_path, ckpt_path, device, batch_size, image_size, sch
         dmin, dmax = float(dmap.min()), float(dmap.max())
         vis = ((dmap - dmin) / (dmax - dmin) * 255).astype(np.uint8)
         imwrite(str(depth_out / f"{Path(name).stem}_depth.png"), vis)
-
-
-    
+        
     if conf_aware_ranking:
         print(f'>> Confiden-aware Ranking...')
         avg_conf_scores = confs.mean(axis=(1, 2))
