@@ -79,11 +79,10 @@ if docker failed to produce reasonable results, try Installation step again with
 ```bash
   # InstantSplat train and output video (no GT reference, render by interpolation) using the following command.
   # Users can place their data in the 'assets/examples/<scene_name>/images' folder and run the following command directly.
-  bash scripts/run_infer.sh
-
-  # InstantSplat train and evaluate (with GT reference) using the following command.
-  bash scripts/run_eval.sh
+  bash scripts/run_infer_pt.sh
 ```
+
+
 
 ## Acknowledgement
 
