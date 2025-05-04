@@ -79,37 +79,11 @@ if docker failed to produce reasonable results, try Installation step again with
 ```bash
   # InstantSplat train and output video (no GT reference, render by interpolation) using the following command.
   # Users can place their data in the 'assets/examples/<scene_name>/images' folder and run the following command directly.
-  bash scripts/run_infer_pt.sh
+  bash scripts/run_infer.sh
+
+  # InstantSplat train and evaluate (with GT reference) using the following command.
+  bash scripts/run_eval.sh
 ```
-
-## ?? Prepare directory structure
-
-Your workspace should look like this (where `project-root` is `./InstantSplat/assets/sora/Santorini/sparse_6/0/`):
-
-project-root
-+-- images.txt # COLMAP image list
-+-- cameras.txt # COLMAP camera intrinsics
-+-- depth_maps/ # Per-frame depth .npy & .png files
-¦ +-- frame0001_depth.npy
-¦ +-- frame0001_depth.png
-¦ +-- frame0002_depth.npy
-¦ +-- frame0002_depth.png
-¦ +-- …
-+-- imgs_6/ # Corresponding RGB images
-¦ +-- frame0001.jpg
-¦ +-- frame0002.jpg
-¦ +-- …
-+-- points3D.ply # Global SfM reconstruction
-
----
-## ?? Run projection visualization
-
-To backproject all component depth maps into the global (camera?world) frame and compare against `points3D.ply`, execute:
-
-```bash
-python ./extra_tools/proj_visualization.py \
-  ./InstantSplat/assets/sora/Santorini/sparse_6/0/
-
 
 ## Acknowledgement
 
