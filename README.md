@@ -85,20 +85,22 @@ if docker failed to produce reasonable results, try Installation step again with
 ## 📁 Prepare directory structure
 
 Your workspace should look like this (where `project-root` is `./InstantSplat/assets/sora/Santorini/sparse_6/0/`):
+```text
 project-root
-├── images.txt # COLMAP image list
-├── cameras.txt # COLMAP camera intrinsics
-├── depth_maps/ # Per-frame depth .npy & .png files
-│ ├── frame0001_depth.npy
-│ ├── frame0001_depth.png
-│ ├── frame0002_depth.npy
-│ ├── frame0002_depth.png
-│ └── …
-├── imgs_6/ # Corresponding RGB images
-│ ├── frame0001.jpg
-│ ├── frame0002.jpg
-│ └── …
-└── points3D.ply # Global SfM reconstruction
+├── images.txt        # COLMAP image list
+├── cameras.txt       # COLMAP camera intrinsics
+├── depth_maps/       # Per-frame depth `.npy` & `.png` files
+│   ├── frame0001_depth.npy
+│   ├── frame0001_depth.png
+│   ├── frame0002_depth.npy
+│   ├── frame0002_depth.png
+│   └── …
+├── imgs_6/           # Corresponding RGB images
+│   ├── frame0001.jpg
+│   ├── frame0002.jpg
+│   └── …
+└── points3D.ply      # Global SfM reconstruction
+```
 
 ---
 ## ▶️ Run projection visualization
@@ -108,7 +110,7 @@ To backproject all component depth maps into the global (camera→world) frame a
 ```bash
 python ./extra_tools/proj_visualization.py \
   ./InstantSplat/assets/sora/Santorini/sparse_6/0/
-
+```
 ---
 
 ## Acknowledgement
