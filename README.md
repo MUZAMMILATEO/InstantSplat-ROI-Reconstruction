@@ -111,6 +111,37 @@ To backproject all component depth maps into the global (camera→world) frame a
 python ./extra_tools/proj_visualization.py \
   ./InstantSplat/assets/sora/Santorini/sparse_6/0/
 ```
+
+### 🛠️ Troubleshooting: Open3D Visualization Error on WSL2
+
+If you encounter the following error while attempting to visualize geometries using Open3D on WSL2:
+```
+GLFW Error: Wayland: The platform does not support setting the window position
+Failed to initialize GLEW.
+[DrawGeometries] Failed creating OpenGL window.
+```
+
+### ✅ [Solution](https://github.com/isl-org/Open3D/issues/6872)
+
+To resolve this, follow the steps below:
+
+1. **Install a compatible C++ runtime library:**
+
+   Ensure `libstdcxx-ng` is installed from the `conda-forge` channel:
+
+   ```bash
+   conda install -c conda-forge libstdcxx-ng
+   ```
+
+2. **Set the session type to X11:**
+   Export the environment variable to force the use of the X11 display protocol instead of Wayland:
+
+   ```bash
+    export XDG_SESSION_TYPE=x11
+   ```
+💡 Tip: Add this line to your shell configuration file (e.g., .bashrc or .zshrc) to make it persistent across sessions.
+
+
 ---
 
 ## Acknowledgement
