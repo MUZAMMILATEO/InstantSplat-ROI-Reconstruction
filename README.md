@@ -105,10 +105,10 @@ project-root
 ---
 ## ▶️ Run projection visualization
 
-To backproject all component depth maps into the global (camera→world) frame and compare against `points3D.ply`, execute:
+To backproject all **foreground pixels** from the component depth maps into the global (camera→world) frame and save the segmented `points3D_seg.ply`, execute:
 
 ```bash
-python ./extra_tools/proj_visualization.py \
+python ./extra_tools/proj_segmentation.py \
   ./InstantSplat/assets/sora/Santorini/sparse_6/0/
 ```
 
