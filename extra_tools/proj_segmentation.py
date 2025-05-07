@@ -76,6 +76,7 @@ def main(main_dir):
         sys.exit(1)
 
     pcds = []
+    proj_pcds = []
     for parts in entries:
         qw, qx, qy, qz = map(float, parts[1:5])
         tx, ty, tz = map(float, parts[5:8])
@@ -149,6 +150,16 @@ def main(main_dir):
         pcd.translate(C)
 
         pcds.append(pcd)
+        proj_pcds.append(pcd)
+
+    # merge and save just the projected (masked) point clouds
+    if proj_pcds:
+        merged = o3d.geometry.PointCloud()
+        for cloud in proj_pcds:
+            merged += cloud
+        save_path = os.path.join(main_dir, 'points3D_seg.ply')
+        o3d.io.write_point_cloud(save_path, merged)
+        print(f"Saved merged masked point cloud to {save_path}")
 
     # ask once whether to include the extra PLY clouds
     resp = input("Include extra PLY files in the final view? [y/N]: ").strip().lower()
